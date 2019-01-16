@@ -22,6 +22,11 @@ public class ShoppingCart {
 		balance += p.getPrice(); // increment the value of the balance 
 	}
 	
+	public void removeItem(Product p) {
+		products.remove(p);
+		balance -= p.getPrice(); // decrement the value of the balance
+	}
+	
 	public boolean contains(Product p) {
 		return products.contains(p);
 	}

@@ -1,5 +1,6 @@
 package test;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -58,6 +59,27 @@ class ShoppingCartTest {
 		// test that only two items exist in the cart -> as it should be
 		assertEquals(expectedCount, currentCount);
 		
+	}
+	
+	// Tests removing a product from the cart. 
+	@Test
+	void testProductRemove(){
+		Product book = new Product("Harry Potter", 23.95);
+		_bookCart.removeItem(book);
+		
+		// test that a book has been removed
+		assertFalse(_bookCart.contains(book));
+		
+		//test that the current balance is equal to the price deducted
+		double expected = 23.95  - book.getPrice();
+		double current = _bookCart.getBalance();	
+		
+		assertEquals(expected, current);
+		
+		int expectedCount = 1;
+		int currentCount = _bookCart.getItemCount();
+		// test that only one item exists in the cart
+		assertEquals(expectedCount, currentCount);
 	}
 
 }
