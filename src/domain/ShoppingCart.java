@@ -18,6 +18,10 @@ public class ShoppingCart {
 		products.add(p);
 	}
 	
+	public boolean contains(Product p) {
+		return products.contains(p);
+	}
+	
 	
 	
 }

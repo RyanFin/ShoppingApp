@@ -1,5 +1,6 @@
 package test;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.AfterEach;
@@ -35,9 +36,15 @@ class ShoppingCartTest {
 		_bookCart = null;
 	}
 
+	// Tests adding a product to the cart.
 	@Test
-	void test() {
-		fail("Not yet implemented");
+	void testProductAdd() {
+		Product book = new Product("Refactoring", 53.95);
+		_bookCart.addItem(book);
+		
+		assertTrue(_bookCart.contains(book));
+		
+		//create expected values
 	}
 
 }
