@@ -1,7 +1,8 @@
 package test;
 
 import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -42,9 +43,21 @@ class ShoppingCartTest {
 		Product book = new Product("Refactoring", 53.95);
 		_bookCart.addItem(book);
 		
+		//test that book has been added
 		assertTrue(_bookCart.contains(book));
 		
-		//create expected values
+		double expected = 23.95 + book.getPrice();
+		double current = _bookCart.getBalance();
+		
+		// test that the current balance is equal to the expected value of the cart
+		assertEquals(expected, current);
+		
+		int expectedCount = 2;
+		int currentCount = _bookCart.getItemCount();
+		
+		// test that only two items exist in the cart -> as it should be
+		assertEquals(expectedCount, currentCount);
+		
 	}
 
 }
